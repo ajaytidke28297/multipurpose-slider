@@ -22,7 +22,7 @@ function ProgressContainer() {
       <Progress min={0} max={100} value={30} />
 
       <h3>Should have possibility to become range slider</h3>
-      <Progress min={-50} max={50} value={[-20, 20]} />
+      <Progress min={-50} max={50} value={[-20, 10]} />
 
       <h3>Should have possibility to become range slider</h3>
       <Progress min={0} max={100} value={value} />

@@ -36,7 +36,9 @@ const Progress: React.FC<ProgressProps> = ({ min, max, value }) => {
       </div>
 
       <Thumb value={value} min={min} max={max} />
-      <Thumb value={value} min={min} max={max} isRightthumb={true} />
+      {Array.isArray(value) && (
+        <Thumb value={value} min={min} max={max} isRightthumb={true} />
+      )}
     </div>
   );
 };
