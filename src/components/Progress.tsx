@@ -50,10 +50,16 @@ const Progress: React.FC<ProgressProps> = ({
       const newValue = Math.round(calculateValue(mouseX, width, min, max));
       if (event.target instanceof HTMLElement) {
         if (Array.isArray(thumbValue)) {
-          if (event.target.classList.contains("thumb-left")) {
-            setThumbValue([newValue, thumbValue[1]]);
+          if (event.target.classList.contains("thumb")) {
+            if (event.target.classList.contains("thumb-left")) {
+              setThumbValue([newValue, thumbValue[1]]);
+            } else {
+              setThumbValue([thumbValue[0], newValue]);
+            }
           } else {
-            setThumbValue([thumbValue[0], newValue]);
+            newValue < thumbValue[0]
+              ? setThumbValue([newValue, thumbValue[1]])
+              : setThumbValue([thumbValue[0], newValue]);
           }
         } else {
           setThumbValue(newValue);
