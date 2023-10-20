@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { calculatePercentage } from "../utils/helper";
 import "./Thumb.css";
 
 interface ThumbProps {
-  value: number | [number, number];
+  value: number;
   min: number;
   max: number;
   isRightthumb?: boolean;
 }
 
 function Thumb({ value, min, max, isRightthumb }: ThumbProps) {
-  const [hoverValue, setHoverValue] = useState<number | null>(null);
+  const [hoverValue, setHoverValue] = useState<number | null>(value);
+
+  useEffect(() => {
+    setHoverValue(value);
+  }, [value]);
 
   return (
     <div
-      className="thumb"
+      className={`thumb ${isRightthumb ? "thumb-right" : "thumb-left"}`}
       style={{
         left: calculatePercentage(
           Array.isArray(value) ? (isRightthumb ? value[1] : value[0]) : value,

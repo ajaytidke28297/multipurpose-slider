@@ -3,7 +3,7 @@ import Progress from "./Progress";
 
 function ProgressContainer() {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [value, setValue] = useState(10);
+  const [value, setValue] = useState<number>(10);
 
   const setInputHandler = () => {
     if (inputRef.current) {
@@ -25,7 +25,8 @@ function ProgressContainer() {
       <Progress min={-50} max={50} value={[-20, 10]} />
 
       <h3>Should have possibility to become range slider</h3>
-      <Progress min={0} max={100} value={value} />
+      <Progress min={0} max={100} value={value} isInputControlled={true} />
+      <br />
       <input type="number" ref={inputRef} onChange={setInputHandler} />
     </>
   );

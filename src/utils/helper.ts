@@ -13,4 +13,13 @@ const calculateWPercentage = (
   return `${(positiveDifference / range) * 100}%`;
 };
 
-export { calculatePercentage, calculateWPercentage };
+const calculateValue = (
+  mouseX: number,
+  width: number,
+  min: number,
+  max: number
+) => {
+  return (mouseX / width) * (max - min) + min;
+};
+
+export { calculatePercentage, calculateWPercentage, calculateValue };
